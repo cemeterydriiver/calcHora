@@ -1,2 +1,3 @@
 # Calculadora de horas: É hora de virar herói!
-calculadora de horas android studio
+Projeto realizado em sala de aula.
+Calculadora de horas produzida no AndroidStudio

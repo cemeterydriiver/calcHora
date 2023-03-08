@@ -17,34 +17,48 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
-        //declarando id
         hi = findViewById(R.id.hi);
         mi = findViewById(R.id.mi);
         hf = findViewById(R.id.hf);
         mf = findViewById(R.id.mf);
         rh = findViewById(R.id.rh);
         rm = findViewById(R.id.rm);
+        //rh.setText(hrInicial+minInicial);
 
 
     }
-    public void soma(View v){
-        int iHi = Integer.parseInt(hi.getText().toString());
-        int iMi = Integer.parseInt(hi.getText().toString());
-        //condicao de tempo
-        while (iRm > 59){
-            iRm -= 60;
-            iRh ++;
+    public void soma(View v) {
+        int hrInicial = Integer.parseInt(hi.getText().toString());
+        int minInicial = Integer.parseInt(mi.getText().toString());
+        int hrFinal = Integer.parseInt(hf.getText().toString());
+        int minFinal = Integer.parseInt(mf.getText().toString());
+
+        int resultadoHr = hrInicial + hrFinal;
+        int resultadoMin = minInicial + minFinal;
+
+        rh.setText(resultadoHr+"");
+        rm.setText(resultadoMin+"");
+
+        while(resultadoMin>59){
+            resultadoMin-=60;
+            resultadoHr++;
         }
-
-        int somaRh = iHi+iHf;
-        int somaRm = iMi+iMf;
-
-        //mandando resultado
-         rh.setText(somaRh);
-         rm.setText(somaRm);
-
     }
     public void sub(View v){
+        int hrInicial = Integer.parseInt(hi.getText().toString());
+        int minInicial = Integer.parseInt(mi.getText().toString());
+        int hrFinal = Integer.parseInt(hf.getText().toString());
+        int minFinal = Integer.parseInt(mf.getText().toString());
 
+        int resultadoHr = hrInicial - hrFinal;
+        int resultadoMin = minInicial - minFinal;
+
+        rh.setText(resultadoHr+"");
+        rm.setText(resultadoMin+"");
+
+        while(resultadoMin>59){
+            resultadoMin-=60;
+            resultadoHr++;
+        }
     }
 }

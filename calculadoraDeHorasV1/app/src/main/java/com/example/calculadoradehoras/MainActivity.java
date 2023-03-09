@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         while(resultadoMin>59){
             resultadoMin-=60;
-            resultadoHr++;
+            resultadoHr--;
         }
     }
 }

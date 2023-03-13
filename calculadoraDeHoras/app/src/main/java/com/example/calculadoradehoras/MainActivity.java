@@ -11,6 +11,10 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     EditText hi, mi, hf, mf;
     TextView rh, rm;
+    int hrInicial;
+    int minInicial;
+    int hrFinal;
+    int minFinal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,51 +31,64 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     public void soma(View v) {
-        int hrInicial = Integer.parseInt(hi.getText().toString());
-        int minInicial = Integer.parseInt(mi.getText().toString());
-        int hrFinal = Integer.parseInt(hf.getText().toString());
-        int minFinal = Integer.parseInt(mf.getText().toString());
+
+        checarCampo();
+
 
         int resultadoHr = hrInicial + hrFinal;
         int resultadoMin = minInicial + minFinal;
 
-        while(resultadoMin>59){
-            resultadoMin-=60;
+
+        while (resultadoMin > 59) {
+            resultadoMin -= 60;
             resultadoHr++;
         }
 
-        rh.setText(resultadoHr+"");
-        rm.setText(resultadoMin+"");
+
+        rh.setText(resultadoHr + "");
+        rm.setText(resultadoMin + "");
+
     }
-    public void sub(View v){
-        int hrInicial = Integer.parseInt(hi.getText().toString());
-        int minInicial = Integer.parseInt(mi.getText().toString());
-        int hrFinal = Integer.parseInt(hf.getText().toString());
-        int minFinal = Integer.parseInt(mf.getText().toString());
+
+    public void sub(View v) {
+        checarCampo();
 
         //hora inicial em minutos
-        while (hrInicial>0){
+        while (hrInicial > 0) {
             hrInicial--;
-            minInicial+=60;
+            minInicial += 60;
         }
         //hora final em minutos
-        while (hrFinal>0) {
+        while (hrFinal > 0) {
             hrFinal--;
             minFinal += 60;
         }
-        int resultadoHr= 0;
+        int resultadoHr = 0;
         int resultadoMin = minInicial - minFinal;
-       if (minFinal>minInicial){
-           resultadoMin = minInicial - minFinal;
+        if (minFinal > minInicial) {
+            resultadoMin = minInicial - minFinal;
 
-       }
-       while (resultadoMin>59){
-            resultadoMin -=60;
+        }
+        while (resultadoMin > 59) {
+            resultadoMin -= 60;
             resultadoHr++;
         }
-        //catch dentro do while e if dentro do catch
-        rh.setText(resultadoHr+"");
-        rm.setText(resultadoMin+"");
+
+        rh.setText(resultadoHr + "");
+        rm.setText(resultadoMin + "");
     }
-}
+
+    public void checarCampo(){
+
+        try {
+          hrInicial = Integer.parseInt(hi.getText().toString());
+          minInicial = Integer.parseInt(mi.getText().toString());
+          hrFinal = Integer.parseInt(hf.getText().toString());
+          minFinal = Integer.parseInt(mf.getText().toString());
+        }catch (Exception e){
+            Toast.makeText(this, "Os campos não podem estar vazios! preencha-os com as horas.", Toast.LENGTH_LONG).show();
+        }
+    }
+    }
